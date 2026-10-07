@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+    />
+    <title>Serum Browser</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="browser-chrome">
+        <div class="controls">
+          <button class="nav-button" aria-label="Back">←</button>
+          <button class="nav-button" aria-label="Forward">→</button>
+          <button class="nav-button" aria-label="Refresh">⟳</button>
+        </div>
+
+        <form id="browser-form" class="browser-form" novalidate>
+          <label class="address-bar-wrap" for="url-input">
+            <span class="address-lock">🔒</span>
+            <input
+              id="url-input"
+              type="text"
+              value="https://example.com"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Address bar"
+            />
+          </label>
+          <button type="submit" class="go-button">Go</button>
+        </form>
+
+        <div class="toolbar-actions">
+          <button class="tool-button" aria-label="Bookmarks">★</button>
+          <button class="tool-button" aria-label="Menu">☰</button>
+        </div>
+      </header>
+
+      <nav class="tab-strip" aria-label="Tabs">
+        <button class="tab active">Home</button>
+        <button class="tab">Products</button>
+        <button class="tab">Docs</button>
+        <button class="tab add-tab">＋</button>
+      </nav>
+
+      <main class="browser-view">
+        <aside class="sidebar">
+          <h2>Security Center</h2>
+          <ul>
+            <li>HTTPS enforcement</li>
+            <li>Strict CSP</li>
+            <li>Sanitized inputs</li>
+            <li>Minimal permissions</li>
+          </ul>
+        </aside>
+
+        <section class="content-area">
+          <div id="status" class="status-bar" aria-live="polite">
+            Ready
+          </div>
+          <iframe
+            id="browser-frame"
+            title="Serum Browser content"
+            src="https://example.com"
+            sandbox="allow-scripts allow-forms allow-modals"
+          ></iframe>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+:root {
+  --bg: #0c1220;
+  --panel: #151d2c;
+  --panel-strong: #1e2940;
+  --surface: #121a2b;
+  --text: #e8edf7;
+  --muted: #8ea0c7;
+  --accent: #67d4ff;
+  --accent-strong: #4c9fef;
+  --success: #62d69d;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: rgba(13, 18, 30, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0b1220 0%, #0e172b 100%);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1200px, 100%);
+  height: min(820px, 92vh);
+  display: flex;
+  flex-direction: column;
+  background: rgba(17, 24, 38, 0.95);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px var(--shadow);
+}
+
+.browser-chrome {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) 120px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  background: rgba(21, 29, 44, 0.92);
+  border-bottom: 1px solid var(--border);
+}
+
+.controls,
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-button,
+.tool-button,
+.go-button,
+.tab {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-button,
+.tool-button {
+  width: 36px;
+  height: 36px;
+}
+
+.nav-button:hover,
+.tool-button:hover,
+.go-button:hover,
+.tab:hover {
+  transform: translateY(-1px);
+  border-color: rgba(103, 212, 255, 0.45);
+}
+
+.browser-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.address-bar-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+  background: rgba(11, 17, 28, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.address-lock {
+  color: var(--success);
+  font-size: 1rem;
+}
+
+#url-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+#url-input::placeholder {
+  color: var(--muted);
+}
+
+.go-button {
+  min-width: 64px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #06121e;
+  font-weight: 700;
+}
+
+.tab-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(12, 18, 30, 0.8);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  padding: 9px 12px;
+  min-width: 110px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--muted);
+}
+
+.tab.active {
+  background: rgba(103, 212, 255, 0.12);
+  color: var(--text);
+  border-color: rgba(103, 212, 255, 0.25);
+}
+
+.tab.add-tab {
+  min-width: 42px;
+  width: 42px;
+  padding: 0;
+}
+
+.browser-view {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: 0;
+}
+
+.sidebar {
+  background: rgba(18, 26, 43, 0.9);
+  border-right: 1px solid var(--border);
+  padding: 20px 18px;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.sidebar li {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(103, 212, 255, 0.05);
+  border: 1px solid rgba(103, 212, 255, 0.12);
+  color: var(--muted);
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.status-bar {
+  padding: 12px 16px;
+  background: rgba(15, 20, 30, 0.95);
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+#browser-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white;
+  min-height: 0;
+}
+
+@media (max-width: 760px) {
+  .browser-chrome {
+    grid-template-columns: 1fr;
+  }
+
+  .browser-view {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
